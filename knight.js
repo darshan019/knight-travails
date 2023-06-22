@@ -1,3 +1,6 @@
+// Online Javascript Editor for free
+// Write, Edit and Run your Javascript code using JS Online Compiler
+
 function movePair(node) {
     const moves = [
         [node[0] + 2, node[1] - 1],
@@ -25,12 +28,14 @@ function knightMoves(node, target) {
     root = Node(node, [node])
     let q = [root]
     let visited = []
-    visited.push(node.toString())
+    visited.push(node)
     
     while(q.length > 0) {
         current = q.shift()
         if(current.pos[0] === target[0] && current.pos[1] === target[1]) {
-            return current.path
+            const string = `The shortest path for reaching the target consist of  ${current.path.length} moves: `
+            const path =  current.path
+            return {string, path}
         }
         let moves = movePair(current.pos)
         for(let move of moves) {
